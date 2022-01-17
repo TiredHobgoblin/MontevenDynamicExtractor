@@ -33,6 +33,7 @@ int main(int argc, char** argv)
 	sarge.setArgument("s", "skeloverride", "skeleton override", true);
 	sarge.setArgument("c", "cbuffer", "enable cbuffer extraction", false);
 	sarge.setArgument("h", "shader", "shader hash", true);
+	sarge.setArgument("bt", "batchtex", "batch textures with pkg ID", true);
 	sarge.setDescription("Destiny 2 dynamic model extractor by Monteven.");
 	sarge.setUsage("MontevenDynamicExtractor");
 
@@ -48,6 +49,7 @@ int main(int argc, char** argv)
 	std::string modelHash;
 	bool bTextures = false;
 	std::string batchPkg;
+	std::string batchTex;
 	sarge.getFlag("pkgspath", pkgsPath);
 	sarge.getFlag("outputpath", outputPath);
 	sarge.getFlag("filename", fileName);
@@ -55,6 +57,7 @@ int main(int argc, char** argv)
 
 	bTextures = sarge.exists("textures");
 	sarge.getFlag("batch", batchPkg);
+	sarge.getFlag("batchtex", batchTex);
 
 	if (fileName == "")
 	{
@@ -87,6 +90,14 @@ int main(int argc, char** argv)
 		return 0;
 	}
 
+	if (batchTex != "")
+	{
+		printf("Batch textures flag found, exporting textures...\n");
+		doBatchTex(pkgsPath, outputPath, batchTex);
+		printf("Batch textures done!\n");
+		return 0;
+	}
+	
 	printf("\nBeginning to extract model...\n");
 	//std::string reference = getReferenceFromHash("0174", modelHash);
 	Dynamic dyn(modelHash, pkgsPath, eTextureFormat::TGA, "");
@@ -125,6 +136,28 @@ void doBatch(std::string pkgsPath, std::string outputPath, std::string batchPkg)
 		}
 		else
 			printf("\nDynamic has no mesh data (A), skipping...\n");
+	}
+}
+
+void doBatchTex(std::string pkgsPath, std::string outputPath, std::string batchPkg)
+{
+	Package Pkg(batchPkg, pkgsPath);
+	Pkg.getEntryTable();
+	std::vector<std::string> hashes;
+	for (int i=0; i<Pkg.entries.size(); i++)
+	{
+		Entry e = Pkg.entries[i];
+		if (e.numtype == 32)
+			hashes.push_back(e.reference);
+	}
+	//iterate through hashes, making a texture object and saving it for each one
+	for (std::string h : hashes)
+	{
+		Texture* tex = new Texture(h, pkgsPath);
+		tex->Get();
+		tex->Save(outputPath+"/"+batchPkg+"/", eTextureFormat.PNG);
+		tex-DSImage.Release();
+		free(tex);
 	}
 }
 
