@@ -8,4 +8,5 @@
 #include <fstream>
 
 void doBatch(std::string pkgsPath, std::string outputPath, std::string batchPkg);
+void doBatchTex(std::string pkgsPath, std::string outputPath, std::string batchPkg);
 void replaceBackslashes(std::string& path);
