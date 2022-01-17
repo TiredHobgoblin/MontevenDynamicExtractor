@@ -9,7 +9,7 @@ Using Sarge https://mayaposch.wordpress.com/2019/03/17/parsing-command-line-argu
 */
 int main(int argc, char** argv)
 {
-	HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+	/*HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 
 	Dynamic dynamic = Dynamic("5b82a780", "P:/D1/packages/", eTextureFormat::DDS, "b227ad80");
 	dynamic.get();
@@ -20,7 +20,7 @@ int main(int argc, char** argv)
 	D1Map dm = D1Map("74449881", "P:/D1/packages/", eTextureFormat::DDS);
 	dm.Get();
 	dm.Extract("C:/Users/monta/Downloads/phonond1maps/", "test_map");
-	exit(2313);
+	exit(2313);*/
 	Sarge sarge;
 
 	sarge.setArgument("p", "pkgspath", "pkgs path", true);
@@ -33,7 +33,7 @@ int main(int argc, char** argv)
 	sarge.setArgument("s", "skeloverride", "skeleton override", true);
 	sarge.setArgument("c", "cbuffer", "enable cbuffer extraction", false);
 	sarge.setArgument("h", "shader", "shader hash", true);
-	sarge.setArgument("bt", "batchtex", "batch textures with pkg ID", true);
+	sarge.setArgument("x", "batchtex", "batch textures with pkg ID", true);
 	sarge.setDescription("Destiny 2 dynamic model extractor by Monteven.");
 	sarge.setUsage("MontevenDynamicExtractor");
 
@@ -65,7 +65,7 @@ int main(int argc, char** argv)
 	}
 
 	// Checking params are valid
-	if (pkgsPath == "" || outputPath == "" || (modelHash == "" && batchPkg == ""))
+	if (pkgsPath == "" || outputPath == "" || (modelHash == "" && batchPkg == "" && batchTex == ""))
 	{
 		std::cerr << "Invalid parameters, potentially backslashes in paths or paths not given.\n";
 		return 1;
@@ -147,7 +147,7 @@ void doBatchTex(std::string pkgsPath, std::string outputPath, std::string batchP
 	for (int i=0; i<Pkg.entries.size(); i++)
 	{
 		Entry e = Pkg.entries[i];
-		if (e.numtype == 32)
+		if (e.numType == 32)
 			hashes.push_back(e.reference);
 	}
 	//iterate through hashes, making a texture object and saving it for each one
@@ -155,8 +155,8 @@ void doBatchTex(std::string pkgsPath, std::string outputPath, std::string batchP
 	{
 		Texture* tex = new Texture(h, pkgsPath);
 		tex->Get();
-		tex->Save(outputPath+"/"+batchPkg+"/", eTextureFormat.PNG);
-		tex-DSImage.Release();
+		tex->Save(outputPath+"/"+batchPkg+"/", eTextureFormat::PNG);
+		tex->DSImage.Release();
 		free(tex);
 	}
 }
