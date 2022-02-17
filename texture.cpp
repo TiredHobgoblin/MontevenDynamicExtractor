@@ -210,6 +210,7 @@ void Material::exportTextures(std::string fullSavePath, eTextureFormat TextureFo
         Texture* tex = element.second;
         if (!tex) continue;
         tex->Get();
+
         tex->Save(fullSavePath, TextureFormat);
         tex->DSImage.Release();
         free(tex);

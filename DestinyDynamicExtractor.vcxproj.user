@@ -5,7 +5,7 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LocalDebuggerCommandArguments>-p "P:/D1/packages" -o "C:/Users/monta/OneDrive/Destiny 2 Datamining/CPP/DestinyDataminingCPP/x64/Release" -t -i C24A7A81</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments> -p "D:/UsersData/eli/Documents/PS4_Packages" -o "D:/UsersData/eli/Downloads/MDE TEX/Textures" -x 0250</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

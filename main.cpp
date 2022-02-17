@@ -142,22 +142,44 @@ void doBatch(std::string pkgsPath, std::string outputPath, std::string batchPkg)
 void doBatchTex(std::string pkgsPath, std::string outputPath, std::string batchPkg)
 {
 	Package Pkg(batchPkg, pkgsPath);
+	Pkg.readHeader();
 	Pkg.getEntryTable();
 	std::vector<std::string> hashes;
+	//hashes.push_back("3304ca80");
+
+	//int32_t iMax = 0;
 	for (int i=0; i<Pkg.entries.size(); i++)
 	{
 		Entry e = Pkg.entries[i];
-		if (e.numType == 32)
-			hashes.push_back(e.reference);
+		if (i == 0x555)
+			int a = 0;
+		if (e.numType == 32 && e.numSubType == 1)
+		{
+			hashes.push_back(uint32ToHexStr(0x80800000+8192*Pkg.header.pkgID+i));
+		}
+		//iMax = i;
 	}
+	//printf(std::to_string(iMax).c_str());
+
 	//iterate through hashes, making a texture object and saving it for each one
 	for (std::string h : hashes)
 	{
-		Texture* tex = new Texture(h, pkgsPath);
-		tex->Get();
-		tex->Save(outputPath+"/"+batchPkg+"/", eTextureFormat::PNG);
-		tex->DSImage.Release();
-		free(tex);
+		try
+		{
+			if (h == "ffffffff") continue;
+
+			std::filesystem::create_directories(outputPath + "/" + batchPkg);
+
+			Texture* tex = new Texture(h, pkgsPath);
+			tex->Get();
+			tex->Save(outputPath + "/" + batchPkg + "/", eTextureFormat::TGA);
+			tex->DSImage.Release();
+			free(tex);
+		}
+		catch (...)
+		{
+			continue;
+		}
 	}
 }
 
