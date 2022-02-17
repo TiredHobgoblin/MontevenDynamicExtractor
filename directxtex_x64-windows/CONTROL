@@ -1,0 +1,8 @@
+Package: directxtex
+Version: sept2021
+Depends: directx-headers, directxmath
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 6fae33de5ce4967c8fe8cd97590717bec988c3adf26be7878e1445db4adaab6f
+Description: DirectXTex texture processing library
+Type: Port
