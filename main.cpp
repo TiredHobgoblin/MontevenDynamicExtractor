@@ -82,6 +82,10 @@ int main(int argc, char** argv)
 		return 1;
 	}
 
+	//D1Map* map = new D1Map("ECA33881", pkgsPath, eTextureFormat::TGA);
+	//map->Get();
+	//map->Extract(outputPath, "Vertigo");
+	
 	if (batchPkg != "")
 	{
 		printf("Batch flag found, exporting batch...\n");

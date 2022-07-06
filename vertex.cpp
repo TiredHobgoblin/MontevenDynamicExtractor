@@ -60,6 +60,7 @@ void VertexBuffer::getVerts(Static* mesh)
 				{
 					readUV(mesh, i, data);
 					readNormal(mesh, i + 4, data);
+					readVertexColour(mesh, i + 12, data);
 				}
 			}
 			else if (s == 16)
@@ -71,6 +72,7 @@ void VertexBuffer::getVerts(Static* mesh)
 				// Not completely sure what gaps are for
 				readUV(mesh, i, data);
 				readNormal(mesh, i + 6, data);
+				readVertexColour(mesh, i + 20, data);
 			}
 			else if (s == 12)
 			{

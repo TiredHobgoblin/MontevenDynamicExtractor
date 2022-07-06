@@ -29,24 +29,24 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -120,14 +120,14 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;FBXSDK_SHARED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.2\include;C:\Sarge\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Program Files\Autodesk\FBX\FBX SDK\2020.2.1\include;D:\UsersData\eli\Documents\GitHub\MDE\Sarge\src</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.2\lib\vs2019\x64\debug;C:\Program Files\Autodesk\FBX\FBX SDK\2020.2\lib;C:\Program Files (x86)\Windows Kits\10\Lib;C:\Sarge\src</AdditionalLibraryDirectories>
-      <AdditionalDependencies>C:\Users\monta\OneDrive\Destiny 2 Datamining\CPP\DestinyDataminingCPP\DestinyUnpackerCPP\x64\Debug\package.obj;C:\Users\monta\OneDrive\Destiny 2 Datamining\CPP\DestinyDataminingCPP\DestinyUnpackerCPP\x64\Debug\helpers.obj;C:\Program Files\Autodesk\FBX\FBX SDK\2020.2\lib\vs2019\x64\debug\libfbxsdk-md.lib;wininet.lib;C:\Users\monta\OneDrive\Destiny 2 Datamining\CPP\DestinyDataminingCPP\DestinyDynamicExtractor\vcpkg\packages\directxtex_x64-windows\debug\lib\DirectXTex.lib;dxguid.lib;windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Program Files\Autodesk\FBX\FBX SDK\2020.2.1\lib\vs2019\x64\debug;D:\Program Files\Autodesk\FBX\FBX SDK\2020.2.1\lib;C:\Program Files (x86)\Windows Kits\10\Lib;D:\UsersData\eli\Documents\GitHub\MDE\Sarge\src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>D:\UsersData\eli\Documents\GitHub\DestinyUnpackerCPP\x64\Debug\package.obj;D:\UsersData\eli\Documents\GitHub\DestinyUnpackerCPP\x64\Debug\helpers.obj;D:\Program Files\Autodesk\FBX\FBX SDK\2020.2.1\lib\vs2019\x64\debug\libfbxsdk-md.lib;wininet.lib;D:\UsersData\eli\Documents\GitHub\MDE\directxtex_x64-windows\debug\lib\DirectXTex.lib;dxguid.lib;windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>LIBMCT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <Profile>true</Profile>
     </Link>

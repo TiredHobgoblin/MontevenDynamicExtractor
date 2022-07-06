@@ -72,7 +72,7 @@ void BakedRegion::GetStaticData()
 	//for (auto& s : Statics)
 	std::for_each(std::execution::par_unseq, Statics.begin(), Statics.end(), [](auto&& s)
 		{
-			if (s->LODType == 1 || s->LODType == 2 || s->LODType == 0)
+			if ((s->LODType == 1 || s->LODType == 2 || s->LODType == 0))
 			{
 				s->ParseVertsAndFaces();
 				// Trim faces
